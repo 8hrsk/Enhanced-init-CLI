@@ -1,5 +1,6 @@
 import { exec } from 'child_process';
 import { spawn } from 'child_process';
+import TemplateReader from './templateReader.js';
 
 export default class Initializator {
 
@@ -10,7 +11,14 @@ export default class Initializator {
             { shell: true, stdio: 'inherit' },
         )
         .on('close', () => {
-            callback()
+            spawn(
+                'npm', 
+                ['i', 'dotenv'], 
+                { shell: true, stdio: 'inherit' }
+            )
+            .on('close', () => {
+                callback()
+            })
         })
         exec('git init');
         exec('echo node_modules > .gitignore');
@@ -18,5 +26,37 @@ export default class Initializator {
         exec('echo package-lock.json >> .gitignore');
         exec('echo //start coding > index.js');
         exec('echo ENVIRONMENT=development >> .env');
+    }
+
+    async initExpress(callback) {
+        const templateReader = new TemplateReader('express');
+
+        await templateReader.readExpress((template) => {
+            spawn(
+                'npm',
+                ['init', '-y'],
+                { shell: true, stdio: 'inherit' },
+            )
+            .on('close', () => {
+                spawn(
+                    'npm', 
+                    ['i', 'express', 'dotenv', 'nodemon'], 
+                    { shell: true, stdio: 'inherit' }
+                )
+                .on('close', () => {
+                    callback()
+                })
+            })
+
+            exec('git init');
+            exec('echo node_modules > .gitignore');
+            exec('echo .env >> .gitignore');
+            exec('echo package-lock.json >> .gitignore');
+            exec('echo PORT=3000 >> .env');
+
+            template.forEach(line => {
+                exec('echo' + line + ' >> index.js');
+            })
+        })
     }
 }
