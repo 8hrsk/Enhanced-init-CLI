@@ -12,7 +12,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "cli"
+    "cli",
+    "npm",
+    "init",
+    "init-npm",
+    "git"
   ],
   "repository": {
     "type": "git",
@@ -20,8 +24,5 @@
   },
   "author": "8hoursking",
   "license": "MIT",
-  "dependencies": {
-    "chalk": "^5.3.0"
-  },
   "homepage": "https://github.com/8hrsk/Enhanced-init-CLI"
 }
