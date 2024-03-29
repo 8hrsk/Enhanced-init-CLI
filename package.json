@@ -1,0 +1,22 @@
+{
+  "name": "inite",
+  "version": "0.0.1",
+  "type": "module",
+  "bin": {
+    "inite": "./bin/index.js"
+  },
+  "preferGlobal": true,
+  "description": "",
+  "main": "bin/index.jsindex.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cli"
+  ],
+  "author": "8hoursking",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^5.3.0"
+  }
+}
