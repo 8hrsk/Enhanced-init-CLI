@@ -59,4 +59,36 @@ export default class Initializator {
             })
         })
     }
+
+    async initTypescript(callback) {
+        spawn(
+            'npm',
+            ['init', '-y'],
+            { shell: true, stdio: 'inherit' },
+        )
+        .on('close', () => {
+            spawn(
+                'npm', 
+                ['i', 'typescript', 'dotenv', 'nodemon'], 
+                { shell: true, stdio: 'inherit' }
+            )
+            .on('close', () => {
+                spawn(
+                    'npx',
+                    ['tsc', '--init'],
+                    { shell: true, stdio: 'inherit' }
+                )
+                .on('close', () => {
+                    callback()
+                })
+            })
+        })
+
+        exec('git init');
+        exec('echo node_modules > .gitignore');
+        exec('echo .env >> .gitignore');
+        exec('echo package-lock.json >> .gitignore');
+        exec('echo ENVIRONMENT=development >> .env');
+        exec('echo //start coding > index.ts');
+    }
 }

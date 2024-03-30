@@ -15,6 +15,12 @@ switch (args[0]) {
         })
         break;
 
+    case 'typescript':
+        init.initTypescript(() => {
+            console.log("\x1b[42m Done! \x1b[0m");
+        })
+        break;
+
     default:
         init.init(() => {
             console.log("\x1b[42m Done! \x1b[0m");
