@@ -7,5 +7,6 @@
 
 ### Args:
 `express` - initialize express project
+`typescript` - initialize simple typescript project
 
 Feel free to contribute or open isues <3
