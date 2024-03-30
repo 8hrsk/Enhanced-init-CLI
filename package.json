@@ -3,7 +3,7 @@
   "version": "1.2.1",
   "type": "module",
   "bin": {
-    "inite": "./bin/index.js"
+    "inite": "bin/index.js"
   },
   "preferGlobal": true,
   "description": "CLI for npm init",
