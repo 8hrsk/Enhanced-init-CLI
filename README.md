@@ -6,7 +6,7 @@
 `inite <empty or arg>` - initialize default project or initialize with args
 
 ### Args:
-`express` - initialize express project
+`express` - initialize express project <br>
 `typescript` - initialize simple typescript project
 
 Feel free to contribute or open isues <3
